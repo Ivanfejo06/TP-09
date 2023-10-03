@@ -5,26 +5,30 @@ using tp9.Models;
 namespace tp9.Controllers;
 public class Account : Controller
 {
+    public IActionResult Login_view()
+    {
+        return View("Login");
+    }
     public IActionResult Login(string username, string contraseña)
     {
         if (BD.Login(username, contraseña) == null)
         {
-            return View("Index");
+            return View("Login");
         }
-        else {return RedirectToAction("welcome");}
+        else {return RedirectToAction("Welcome");}
     }
-    public IActionResult Registro_view()
+    public IActionResult Registro_View()
     {
         return View("Registro");
     }
     [HttpPost] public IActionResult Registro(Usuario user)
     {
-        if(BD.BuscarUsuario(user.UserName != null))
+        if(BD.BuscarUsuario(user.UserName) != "")
         {
             BD.Registrarse(user);
-            return RedirectToAction("welcome");
+            return RedirectToAction("Login_view");
         }
-        else{return View(Registro(user));}
+        else{return View("Registro",user);}
     }
     public IActionResult OlvideContraseña_View()
     {

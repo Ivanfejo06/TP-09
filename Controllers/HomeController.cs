@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-namespace TPBase.Controllers;
+using System.Data.SqlClient;
+using Dapper;
+using tp9.Models;
+namespace tp9.Controllers;
 public class HomeController : Controller
 {
-    public IActionResult Index(string username, string contraseña)
+    public IActionResult Index()
     {
         return View();
     }

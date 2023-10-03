@@ -3,11 +3,11 @@ using Dapper;
 namespace tp9.Models;
 public static class BD
 {
-    private static string _connectionString = @"Server=localhost; DataBase=UserLogin; Trusted_Connection=True;";
+    private static string _connectionString = @"Server=localhost; DataBase=TP9; Trusted_Connection=True;";
     public static Usuario Login(string username, string contraseña)
     {
         Usuario devolver = null;
-        string sql = "Select * From Usuario Where UserName = @name and Contraseña = @con";
+        string sql = "Select * From Usuario Where UserName = @pname and Contraseña = @pcon";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             devolver = db.QueryFirstOrDefault<Usuario>(sql, new{pname = username, pcon = contraseña});
@@ -16,17 +16,17 @@ public static class BD
     }
     public static void Registrarse(Usuario user)
     {
-        string sql = "Insert into Usuario(UserName, Contraseña, Telefono, Mail, FechaNacimiento) Values (@IdPartido, @Apellido, @Nombre, @FechaNacimiento, @Foto, @Postulacion)";
+        string sql = "Insert into Usuario(UserName, Contraseña, Telefono, Mail, DNI) Values (@use, @con, @tel, @mail, @dni)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, user);
+            db.Execute(sql, new{pname = user.UserName, con = user.Contraseña, tel = user.Telefono, mail = user.Mail, fecha = user.DNI});
         }
     }
 
     public static Usuario ReemplazarContraseña(string mail, string con)
     {
         Usuario devolver = null;
-        string sql = "Update Usuario Set Contraseña = @newcon Where Mail = @mail";
+        string sql = "Update Usuario Set Contraseña = @pnewcon Where Mail = @pmail";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             devolver = db.QueryFirstOrDefault<Usuario>(sql, new{pnewcon = con, pmail = mail});
@@ -36,7 +36,7 @@ public static class BD
     public static string BuscarUsuario(string username)
     {
         string devolver = null;
-        string sql = "Select * From Usuario Where UserName = @name";
+        string sql = "Select * From Usuario Where UserName = @pname";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             devolver = db.QueryFirstOrDefault<string>(sql, new{pname = username});
