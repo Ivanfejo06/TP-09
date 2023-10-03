@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Registro";
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="site.css">
+    </head>
+    <body>
+        <script src="javajs.js"></script>
+        <h1>Registro de Usuario</h1>
+        <form name="register" action="">
+            <label for="UserName">Nombre de Usuario</label>
+            <input type="text" name="UserName" placeholder="Usuario" required></input>
+            <span id="UsernameAlert" class="alert"></span>
+
+            <label for="UserName">Contraseña</label>
+            <input type="text" value="" name="Contraseña" placeholder="Contraseña" id="c1" onchange="ValidatePassword()" required></input>
+            <span id="PasswordAlert" class="alert"></span>
+            <input type="text" value="" name="Contraseña2" placeholder="Repetir Contraseña" id="c2" onchange="ValidateRepeat()" required></input>
+            <span id="RepeatAlert" class="alert"></span>
+
+            <label for="UserName">Telefono</label>
+            <input type="number" value="" name="Telefono" placeholder="Telefono" required></input>
+
+            <label for="UserName">Mail</label>
+            <input type="email" value="" name="Mail" placeholder="Mail" id="mail" onchange="ValidateEmail()" required></input>
+            <span id="MailAlert" class="alert"></span>
+
+            <label for="UserName">Fecha de Nacimiento</label>
+            <input type="date" value="" name="FechaNacimiento" placeholder="Fecha de Nacimiento" required></input>
+
+        </form>
+    </body>
+</html>

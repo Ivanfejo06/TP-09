@@ -5,29 +5,32 @@ using tp9.Models;
 namespace tp9.Controllers;
 public class Account : Controller
 {
-    public IActionResult Login_view()
-    {
-        return View("Login");
-    }
     public IActionResult Login(string username, string contraseña)
     {
-        ViewBag.Username = BD.Login(username, contraseña);
-        return View("Index");
+        if (BD.Login(username, contraseña) == null)
+        {
+            return View("Index");
+        }
+        else {return RedirectToAction("welcome");}
     }
-    public IActionResult Registrarse_view()
+    public IActionResult Registro_view()
     {
-        return View("Registrarse");
+        return View("Registro");
     }
-    [HttpPost] public IActionResult Registrarse(Usuario user)
+    [HttpPost] public IActionResult Registro(Usuario user)
     {
-        BD.Registrarse(user);
-        return View("Index");
+        if(BD.BuscarUsuario(user.UserName != null))
+        {
+            BD.Registrarse(user);
+            return RedirectToAction("welcome");
+        }
+        else{return View(Registro(user));}
     }
-    public IActionResult ReemplazarContraseña_View()
+    public IActionResult OlvideContraseña_View()
     {
-        return View("ReemplazarContraseña");
+        return View("Olvide");
     }
-    public IActionResult ReemplazarContraseña(string mail, string contraseña)
+    public IActionResult OlvideContraseña(string mail, string contraseña)
     {
         BD.ReemplazarContraseña(mail, contraseña);
         return View("index");

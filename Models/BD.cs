@@ -7,7 +7,7 @@ public static class BD
     public static Usuario Login(string username, string contraseña)
     {
         Usuario devolver = null;
-        string sql = "Select * From Usuario Where UserName = @name, Contraseña = @con";
+        string sql = "Select * From Usuario Where UserName = @name and Contraseña = @con";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             devolver = db.QueryFirstOrDefault<Usuario>(sql, new{pname = username, pcon = contraseña});
@@ -33,4 +33,15 @@ public static class BD
         }
         return devolver;
     }
+    public static string BuscarUsuario(string username)
+    {
+        string devolver = null;
+        string sql = "Select * From Usuario Where UserName = @name";
+        using(SqlConnection db = new SqlConnection(_connectionString))
+        {
+            devolver = db.QueryFirstOrDefault<string>(sql, new{pname = username});
+        }
+        return devolver;
+    }
+    
 }
