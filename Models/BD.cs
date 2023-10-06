@@ -19,7 +19,7 @@ public static class BD
         string sql = "Insert into Usuario(UserName, Contraseña, Telefono, Mail, DNI) Values (@use, @con, @tel, @mail, @dni)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, new{pname = user.UserName, con = user.Contraseña, tel = user.Telefono, mail = user.Mail, fecha = user.DNI});
+            db.Execute(sql, new{use = user.UserName, con = user.Contraseña, tel = user.Telefono, mail = user.Mail, dni = user.DNI});
         }
     }
 

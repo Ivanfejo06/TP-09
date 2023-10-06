@@ -17,6 +17,9 @@ public class Account : Controller
         }
         else {return RedirectToAction("Welcome");}
     }
+    public IActionResult Welcome(){
+        return View("Welcome");
+    }
     public IActionResult Registro_View()
     {
         return View("Registro");
@@ -37,7 +40,7 @@ public class Account : Controller
     public IActionResult OlvideContraseña(string mail, string contraseña)
     {
         BD.ReemplazarContraseña(mail, contraseña);
-        return View("index");
+        return View("Login");
     }
 }
 
