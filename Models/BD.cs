@@ -4,6 +4,11 @@ namespace tp9.Models;
 public static class BD
 {
     private static string _connectionString = @"Server=localhost; DataBase=TP9; Trusted_Connection=True;";
+    
+    public static Usuario LoadUserData(){
+        Usuario user = null;
+        return user;
+    }
     public static Usuario Login(string username, string contraseña)
     {
         Usuario devolver = null;

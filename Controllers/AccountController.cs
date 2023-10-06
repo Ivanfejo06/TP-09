@@ -15,9 +15,14 @@ public class Account : Controller
         {
             return View("Login");
         }
-        else {return RedirectToAction("Welcome");}
+        else
+        {
+            return RedirectToAction("Welcome", new {name = username});
+        }
     }
-    public IActionResult Welcome(){
+    public IActionResult Welcome(string name)
+    {
+        ViewBag.UserName = name;
         return View("Welcome");
     }
     public IActionResult Registro_View()
@@ -43,4 +48,3 @@ public class Account : Controller
         return View("Login");
     }
 }
-
