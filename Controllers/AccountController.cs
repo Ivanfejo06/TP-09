@@ -11,7 +11,7 @@ public class Account : Controller
     }
     public IActionResult Login(string username, string contraseña)
     {
-        if (BD.Login(username, contraseña) == null) 
+        if (BD.Login(username, contraseña) == null)
         {
             return View("Login");
         }
