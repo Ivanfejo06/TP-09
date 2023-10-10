@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Olvide";
+}
+<form class="center" method="post" action='@Url.Action("OlvideContraseña","Account")'>
+    <label for="UserName">Mail</label>
+    <input type="email" value="" name="Mail" placeholder="Mail" id="mail" onkeyup="ValidateEmail()" required></input>
+    <span id="MailAlert" class="alert"></span>
+
+    <label for="UserName">Contraseña</label>
+    <input type="password" value="" name="Contraseña" placeholder="Contraseña" id="c1" onkeyup="ValidatePassword()" required></input>
+    <span id="PasswordAlert" class="alert"></span>
+    
+    <label for="UserName">Repetir contraseña</label>
+    <input type="password" value="" name="Contraseña2" placeholder="Repetir Contraseña" id="c2" onkeyup="ValidateRepeat()" required></input>
+    <span id="RepeatAlert" class="alert"></span>
+
+    <button type="submit">Enviar</button>
+</form>

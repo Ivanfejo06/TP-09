@@ -2,9 +2,9 @@ namespace tp9.Models;
 
 public class Usuario
 {
-    static public string UserName {get; private set;}
-    static private string Contraseña;
-    static private int Telefono;
-    static private string Mail;
-    static private DateTime FechaNacimiento;
+    public string UserName {get; set;}
+    public string Contraseña {get; set;}
+    public int Telefono {get; set;}
+    public string Mail {get; set;}
+    public int DNI {get; set;}
 }

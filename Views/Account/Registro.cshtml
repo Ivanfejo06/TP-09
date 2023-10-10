@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Registro";
+}
+<h1>¡Bienvenido, Registrate!</h1>
+<form class="center" method="post" action='@Url.Action("Registro","Account")'>
+    <label for="UserName">Nombre de Usuario</label>
+    <input type="text" name="UserName" placeholder="Usuario" required></input>
+    <span id="UsernameAlert" class="alert"></span>
+
+    <label for="UserName">Contraseña</label>
+    <input type="password" value="" name="Contraseña" placeholder="Contraseña" id="c1" onkeyup="ValidatePassword()" required></input>
+    <span id="PasswordAlert" class="alert"></span>
+    <label for="UserName">Repetir contraseña</label>
+    <input type="password" value="" placeholder="Repetir Contraseña" id="c2" onkeyup="ValidateRepeat()" required></input>
+    <span id="RepeatAlert" class="alert"></span>
+
+    <label for="UserName">Telefono</label>
+    <input type="number" value="" name="Telefono" placeholder="Telefono" id="telefono" onkeyup="ValidateTelefono()" required></input>
+    <span id="TelefonAlert" class="alert"></span>
+
+    <label for="UserName">Mail</label>
+    <input type="email" value="" name="Mail" placeholder="Mail" id="mail" onkeyup="ValidateEmail()" required></input>
+    <span id="MailAlert" class="alert"></span>
+
+    <label for="UserName">DNI</label>
+    <input type="number" value="" name="DNI" placeholder="DNI" required></input>
+
+    <button type="submit">Enviar</button>
+</form>

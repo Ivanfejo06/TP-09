@@ -10,7 +10,8 @@ function ValidatePassword()
     if(password.value.length >= 8){leng = true;}
 
     //Checking for special characters
-    for (let i = 0; i < password.value.length; i++) {
+    for (let i = 0; i < password.value.length; i++)
+    {
         const element = password.value[i];
         if(format.test(element)){spec = true;}
     }
@@ -25,22 +26,33 @@ function ValidatePassword()
     //Validate all 3
     if(!leng)
     {
-        password.value = "";
-        passwordAlert.textContent = "La contraseña debe tener al menos 8 caracteres.";
+        PasswordAlert.textContent = "La contraseña debe tener al menos 8 caracteres.";
     }
-    else {passwordAlert.textContent = "";}
     if(!spec)
     {
-        password.value = "";
-        passwordAlert.textContent = "La contraseña debe tener al menos 1 caracter especial.";
+        PasswordAlert.textContent = "La contraseña debe tener al menos 1 caracter especial.";
     }
-    else {passwordAlert.textContent = "";}
     if(!upp)
     {
-        password.value = "";
-        passwordAlert.textContent = "La contraseña debe tener al menos 1 letra mayuscula.";
+        PasswordAlert.textContent = "La contraseña debe tener al menos 1 letra mayuscula.";
     }
-    else {passwordAlert.textContent = "";}
+    if(spec && leng && upp){PasswordAlert.textContent = "";}
+}
+
+function ValidateTelefono()
+{  
+    let leng = false;
+    let telefon = document.getElementById("telefono")
+
+    //Checking length
+    if(telefon.value.length <= 11){leng = true;}
+
+    //Validate telefon
+    if(!leng)
+    {
+        TelefonAlert.textContent = "El telefono no debe excederse de los 11 caracteres.";
+    }
+    else{TelefonAlert.textContent = "";}
 }
 
 function ValidateRepeat()
@@ -51,7 +63,6 @@ function ValidateRepeat()
     if(c1.value === c2.value){RepeatAlert.textContent = ""}
     else 
     {
-        c2.value = "";
         RepeatAlert.textContent = "La contraseñas no coinciden.";
     }
 }
@@ -62,8 +73,5 @@ function ValidateEmail()
     let mail = document.getElementById("mail")
     if(mail.value.test(mailformat)){MailAlert.textContent = "";}
     else
-    {
-        mail.value = "";
-        MailAlert.textContent = "El mail introducido no cumple con el formato de mail.";
-    }
+    {MailAlert.textContent = "El mail introducido no cumple con el formato de mail.";}
 }
